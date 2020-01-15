@@ -1,8 +1,8 @@
 <template>
   <v-app>
     <v-content>
-      <TheHeader />
       <v-container>
+        <TheHeader />
         <nuxt />
       </v-container>
     </v-content>

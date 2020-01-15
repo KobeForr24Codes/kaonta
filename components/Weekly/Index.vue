@@ -1,7 +1,7 @@
 <template>
-  <v-container>
-    <p class="display-1 mb-0">Weekly Favorites</p>
-    <span>Foods trips that have chosen the most this week.</span>
+  <v-container px-10 py-0>
+    <p class="headline font-weight-bold mb-0">Weekly Favorites</p>
+    <span class="body-2">Foods trips that have chosen the most this week.</span>
     <v-row>
       <v-col
         v-for="item in items"
@@ -12,7 +12,7 @@
         <v-img :src="item.img" aspect-ratio="1.7"></v-img>
         <span class="subtitle-2 grey--text">Dipolog City, Philippines</span>
         <v-list-item-title class="subtitle-2">{{ item.title }}</v-list-item-title>
-        <v-card-actions class="pa-0">
+        <v-card-actions class="pa-0 mt-2">
           <span>P150.00 per pax</span>
           <v-spacer />
           <span>4.2</span>
