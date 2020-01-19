@@ -1,5 +1,5 @@
 <template>
-  <v-container px-10 py-0>
+  <v-container pa-0>
     <p class="headline font-weight-bold mb-0">Weekly Favorites</p>
     <span class="body-2">Foods trips that have chosen the most this week.</span>
     <v-row>
@@ -16,7 +16,7 @@
           <span>P150.00 per pax</span>
           <v-spacer />
           <span>4.2</span>
-          <v-icon color="error">mdi-star</v-icon>
+          <v-icon small color="primary">mdi-star</v-icon>
         </v-card-actions>
       </v-col>
     </v-row>
