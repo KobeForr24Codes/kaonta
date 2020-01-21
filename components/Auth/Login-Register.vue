@@ -86,7 +86,7 @@ export default {
   },
   methods: {
     login() {
-      alert('login clicked')
+      this.$router.push('/food-feed')
     },
     signUp() {
       alert('signUp clicked')

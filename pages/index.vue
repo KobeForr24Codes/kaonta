@@ -9,7 +9,7 @@
           sed diam voluptua. At vero eos et
         </span>
       </v-col>
-      <Login />
+      <LoginRegister />
       <v-col cols="12" class="mt-12">
         <WeeklyFavorites />
       </v-col>
@@ -20,12 +20,12 @@
 
 <script>
 import WeeklyFavorites from '@/components/Weekly/Index'
-import Login from '@/components/Auth/Login'
+import LoginRegister from '@/components/Auth/Login-Register'
 
 export default {
   components: {
     WeeklyFavorites,
-    Login
+    LoginRegister
   }
 }
 </script>
