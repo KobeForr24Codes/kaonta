@@ -1,6 +1,6 @@
 <template>
   <v-card outlined class="my-3 px-6">
-    <v-card-title class="px-0 pt-0">
+    <v-card-title class="px-0 pt-1">
      <v-avatar>
         <img
           small
@@ -22,31 +22,39 @@
       exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
     </p>
     <v-divider class="pb-3"></v-divider>
-    <v-card-actions>
+    <v-card-actions class="pa-0">
       <span>Dorothy Joy and 6 others</span>
       <v-spacer></v-spacer>
       <span>24 Comments</span>
     </v-card-actions>
     <v-card-actions class="text-center pa-0">
-      <v-col cols="6">
-        <v-btn text color="error">
+      <v-col cols="6" class="px-0">
+        <v-btn block text color="error">
           <v-icon>mdi-heart-circle</v-icon>
           <span class="body-1 font-weight-medium pl-2">Like</span>
         </v-btn>
       </v-col>
-      <v-col cols="6">
-        <v-btn text>
+      <v-col cols="6" class="px-0">
+        <v-btn block text>
           <v-icon>mdi-comment-text-outline</v-icon>
           <span class="body-1 font-weight-medium pl-2">Comment</span>
         </v-btn>
       </v-col>
     </v-card-actions>
+    <CreateComment />
+    <TheComments />
   </v-card>
 </template>
 
 <script>
-export default {
+import CreateComment from '@/components/FoodFeed/Comments/CreateComments'
+import TheComments from '@/components/FoodFeed/Comments/TheComments'
 
+export default {
+  components: {
+    CreateComment,
+    TheComments
+  }
 }
 </script>
 
