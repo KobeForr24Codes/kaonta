@@ -4,17 +4,18 @@
       <v-card outlined class="pa-5">
         <CreatePost />
       </v-card>
-      <Feed v-for="i in 3" :key="i.index" />
+      <Feed />
     </v-col>
   </v-row>
   
 </template>
 
 <script>
-import CreatePost from '@/components/FoodFeed/Create'
+import CreatePost from '@/components/FoodFeed/CreateFeed'
 import Feed from '@/components/FoodFeed/Feed'
 
 export default {
+  name: 'FeedIndex',
   components: {
     CreatePost,
     Feed
