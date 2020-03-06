@@ -40,22 +40,29 @@ export default {
       }
     },
     createFeed() {
-      let feed = {
-        _id: '3',
-        creator: {
-          profileImage: 'https://randomuser.me/api/portraits/men/32.jpg',
-          fullName: 'Kobe Forrosuelo',
-        },
-        description: this.feedContent,
-        likes: [],
-        comments: [],
-        showComments: false,
-        createdAt: '2020-01-03T07:32:55.706+00:00'
-      }
+      this.$axios.$post('/api/posts/')
+        .then(res => {
+          console.log(res)
+        })
+        .catch(err => {
+          console.log(err.response.data)
+        })
+      // let feed = {
+      //   _id: '3',
+      //   creator: {
+      //     profileImage: 'https://randomuser.me/api/portraits/men/32.jpg',
+      //     fullName: 'Kobe Forrosuelo',
+      //   },
+      //   description: this.feedContent,
+      //   likes: [],
+      //   comments: [],
+      //   showComments: false,
+      //   createdAt: '2020-01-03T07:32:55.706+00:00'
+      // }
 
-      this.$store.dispatch('modules/food-feed/addFoodFeed', feed)
-      this.noContent = false
-      this.feedContent = ''
+      // this.$store.dispatch('modules/food-feed/addFoodFeed', feed)
+      // this.noContent = false
+      // this.feedContent = ''
     }
   },
   watch: {

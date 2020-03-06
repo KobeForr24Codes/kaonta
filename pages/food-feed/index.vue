@@ -19,6 +19,7 @@ export default {
   components: {
     CreatePost,
     Feed
-  }
+  },
+  middleware: 'auth'
 }
 </script>

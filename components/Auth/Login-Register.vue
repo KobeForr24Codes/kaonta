@@ -9,6 +9,7 @@
             :class="{ 'primary' : isLogin }"
             @click="$store.dispatch('modules/controller/changeAuthState', true)"
           >Login</v-btn>
+          <!-- $store.dispatch('modules/controller/changeAuthState', true) -->
         </v-col>
         <v-col cols=5>
           <v-btn
@@ -20,6 +21,13 @@
         </v-col>
       </v-row>
       <form>
+        <v-text-field
+          v-if="!isLogin"
+          v-model="fullName"
+          label="Full Name"
+          outlined
+          required
+        ></v-text-field>
         <v-text-field
           v-model="email"
           label="E-mail"
@@ -35,24 +43,11 @@
           outlined
           required
         ></v-text-field>
-        <div v-if="!isLogin">
-          <v-text-field
-            v-model="firstName"
-            label="First Name"
-            outlined
-            required
-          ></v-text-field>
-          <v-text-field
-            v-model="lastName"
-            label="Last Name"
-            outlined
-            required
-          ></v-text-field>
-        </div>
         <v-btn
           block
           large
           depressed
+          :loading="isLoading"
           :class="{ 'primary' : isLogin, 'success': !isLogin }"
           @click="isLogin ? login() : signUp()"
         >{{ isLogin ? 'Login' : 'Sign Up'}}</v-btn>
@@ -74,22 +69,51 @@
 </template>
 
 <script>
+import {fireDb} from '~/plugins/firebase.js'
+
 export default {
   data() {
     return {
+      isLoading: false,
       showPassword: false,
       email: '',
       password: '',
-      firstName: '',
-      lastName: ''
+      fullName: ''
     }
   },
   methods: {
-    login() {
-      this.$router.push('/food-feed')
+    async login() {
+      this.isLoading = true
+      this.$store.dispatch('modules/user/authUser', {
+        email: this.email,
+        password: this.password
+      })
+        .then(() => {
+          this.$router.push('/food-feed')
+        })
+        .catch(error => {
+          alert(error)
+        })
+        .finally(() => {
+          this.isLoading = false
+        })
     },
-    signUp() {
-      alert('signUp clicked')
+    async signUp() {
+      this.isLoading = true
+      await this.$axios.$post('/api/users/register', {
+        email: this.email,
+        password: this.password,
+        fullName: this.fullName
+      })
+        .then(res => {
+          console.log(res)
+        })
+        .catch(err => {
+          console.log(err.response.data)
+        })
+        .finally(() => {
+          this.isLoading = false
+        })
     }
   },
   computed: {
